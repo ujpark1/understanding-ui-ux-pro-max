@@ -12,6 +12,7 @@
   --warn:#9A6B12; --warn-soft:#F5ECD9;
   --ok:#3E6B32; --ok-soft:#E6EEDF;
   --chip:#EDF0EB; --viz:#EFF2EE;
+  --info:#2B5FA5; --info-soft:#E6EEF7;
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -21,6 +22,7 @@
     --warn:#D9A94E; --warn-soft:#3A301F;
     --ok:#9CC488; --ok-soft:#26321F;
     --chip:#2A322A; --viz:#232A23;
+    --info:#8FB4E0; --info-soft:#1F2C3C;
   }
 }
 *{box-sizing:border-box}
@@ -50,7 +52,6 @@ h2{font-size:21px;margin:40px 0 6px;font-weight:800}
 .g-B{background:var(--warn-soft);color:var(--warn)}
 .g-C{background:var(--danger-soft);color:var(--danger)}
 .g-D{background:var(--danger-soft);color:var(--danger)}
-/* 차트 카드 */
 .chart-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;
   padding:22px;margin:16px 0;display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:start}
 .chart-card .viz{position:sticky;top:16px}
@@ -67,6 +68,8 @@ h2{font-size:21px;margin:40px 0 6px;font-weight:800}
 .u .ul{display:block;font-size:12.5px;font-weight:800;margin-bottom:5px}
 .u.good .ul{color:var(--ok)}
 .u.avoid .ul{color:var(--danger)}
+.acc{background:var(--info-soft);border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.55;margin-top:12px}
+.acc .al{display:block;font-size:12.5px;font-weight:800;color:var(--info);margin-bottom:4px}
 .foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:14px}
 .altnote{font-size:12.5px;color:var(--muted)}
 footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
@@ -83,7 +86,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <header class="page">
 <p class="eyebrow">UI UX Pro Max · 상황별 그래프 고르기</p>
 <h1>어떤 그래프를 써야 할까?</h1>
-<p class="lede">“이 데이터를 어떻게 보여주지?” 막막할 때 펼쳐 보세요. 보여주려는 내용에 딱 맞는 그래프와, 반대로 피해야 할 그래프를 상황별로 정리했어요.</p>
+<p class="lede">“이 데이터를 어떻게 보여주지?” 막막할 때 펼쳐 보세요. 보여주려는 내용에 딱 맞는 그래프와, 반대로 피해야 할 그래프, 그리고 누구나 보게 만드는 법까지 상황별로 정리했어요.</p>
 </header>
 
 <div class="stats">
@@ -95,6 +98,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="insight">
 <p><strong>예쁜 그래프가 아니라 ‘내 데이터에 맞는’ 그래프를 고르는 게 먼저예요.</strong> 같은 숫자라도 “시간에 따른 변화”인지 “항목 비교”인지 “전체 중 비율”인지에 따라 어울리는 그래프가 완전히 달라지거든요. 그래서 여기선 “이런 걸 보여주고 싶을 때 → 이 그래프”로 묶어뒀어요.</p>
 <p><strong>👎 ‘피하세요’ 부분을 특히 봐주세요.</strong> 예를 들어 파이 차트는 조각이 5개만 넘어도 눈으로 구분이 안 돼요. 흔히들 쓰지만 상황에 안 맞으면 오히려 헷갈리는 그래프들이 있답니다.</p>
+<p><strong>♿ ‘누구나 보게 하려면’도 꼭 챙겨 주세요.</strong> 우리나라 남성 20명 중 1명은 색약이에요. 색만으로 정보를 전하면 그분들껜 안 보이거든요. 그래서 각 그래프마다 “색 말고 이렇게도 표시하고, 숫자 표를 곁들이세요” 같은 팁을 달아뒀어요.</p>
 </div>
 
 <div class="legend">
@@ -117,6 +121,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>매출·방문자 수처럼 “시간에 따라 어떻게 변했나”를 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>점이 3~4개밖에 없거나, 선이 6개 넘게 겹쳐 복잡해질 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>색만으로 선을 구분하지 말고 실선·점선으로도 나눠 주세요. 색약인 분을 위해 값이 담긴 표를 함께 두면 좋아요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 영역 차트, 스무스 영역</span></div>
 </div>
 </article>
@@ -130,6 +135,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“어느 상품이 제일 많이 팔렸나”처럼 항목끼리 크기를 견줄 때 (15개 이하)</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>항목이 15개가 넘거나, 시간 흐름을 볼 때 (그땐 라인이 나아요)</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>막대마다 숫자 값을 표시하고, 표로도 내려받을 수 있게 하면 누구나 정확히 읽을 수 있어요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 컬럼 차트, 그룹 막대</span></div>
 </div>
 </article>
@@ -143,6 +149,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>조각이 5개 이하이고 “하나가 유독 크다”를 강조하고 싶을 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>조각이 5개를 넘거나, 크기가 비슷해 눈으로 구분이 안 될 때, 정확한 숫자가 중요할 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>색에만 의존하면 색약인 분은 조각 구분이 안 돼요. 조각마다 % 숫자를 적고, 옆에 표를 꼭 함께 두세요.</div>
 <div class="foot"><span class="chip g-C">⚠️ 표를 꼭 같이 보여주세요</span><span class="altnote">비슷한 그래프: 누적 막대, 와플 차트</span></div>
 </div>
 </article>
@@ -156,6 +163,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“광고비를 늘리면 매출도 느나?”처럼 두 숫자의 관계나 튀는 값을 찾을 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>항목이 이름표(카테고리)일 때, 점이 20개도 안 될 때, 작은 화면 위주일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>색만 쓰지 말고 동그라미·세모·네모 같은 모양으로도 그룹을 구분하고, 숫자 표를 곁들이세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: 히트맵, 매트릭스</span></div>
 </div>
 </article>
@@ -169,6 +177,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“요일×시간대별로 언제 사람이 몰리나”처럼 격자 위 밀도를 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>칸이 20개도 안 되거나, 정확한 값을 하나씩 읽어야 할 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>색 위에 마우스를 올리면 실제 숫자가 뜨게 하고, 범례에 눈금을 넣어 진하기가 얼마인지 알 수 있게 하세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: 그리드 히트맵, 버블 히트</span></div>
 </div>
 </article>
@@ -182,6 +191,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>데이터에 지역·위치가 들어 있고 “어디에 몰려 있나”가 핵심일 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>넓은 땅이 실제보다 과장돼 보일 때, 모바일 위주일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>주요 지역엔 이름표를 달고, 지역명·값을 담은 표를 함께 제공하면 지도를 못 봐도 이해할 수 있어요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: 지리 히트맵</span></div>
 </div>
 </article>
@@ -195,6 +205,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“방문 → 가입 → 결제”처럼 단계별로 몇 %가 남는지 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>단계 순서가 없거나, 뒤 단계가 앞보다 커질 수 있을 때, 단계가 3개도 안 될 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>단계마다 몇 %가 넘어갔는지 숫자를 적고, “방문 100 → 가입 40” 식의 목록으로도 볼 수 있게 하세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 워터폴(흐름용)</span></div>
 </div>
 </article>
@@ -208,6 +219,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“월 목표의 몇 %”처럼 정해진 목표 하나를 보여줄 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>목표 자체가 없을 때, 여러 지표를 한꺼번에 비교할 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>바늘 위치만이 아니라 “목표의 82%”처럼 숫자를 항상 글자로 함께 보여주세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 다이얼, 온도계</span></div>
 </div>
 </article>
@@ -221,6 +233,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“지금까지 이랬으니 앞으로 이 정도”라는 예측과 그 오차 범위를 같이 보여줄 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>비교할 과거 데이터가 없을 때, 예측이 너무 안 맞을 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>실적과 예측을 색뿐 아니라 실선·점선으로 구분하고, 둘을 켜고 끌 수 있는 버튼을 주세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 리본 차트</span></div>
 </div>
 </article>
@@ -234,6 +247,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>서버·매출 모니터링처럼 “갑자기 튄 순간”을 알아채야 할 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>튀는 게 미리 정해진 종류일 때, 멈춤 버튼 없는 실시간 화면일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>튄 지점을 색만이 아니라 모양(동그라미 등)으로도 표시하고, “몇 시에 무슨 일”이라는 요약 목록을 옆에 두세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 알림 산점도</span></div>
 </div>
 </article>
@@ -247,6 +261,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“예산이 부서별로 어떻게 나뉘나”처럼 큰 덩어리 구성을 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>3단계 넘게 깊어질 때, 비슷한 조각을 정확히 비교해야 할 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>색약인 분에겐 넓이 비교가 어려워요. 접었다 펴는 표를 기본으로 두고, 트리맵은 보조로만 쓰세요.</div>
 <div class="foot"><span class="chip g-C">⚠️ 표를 꼭 같이 보여주세요</span><span class="altnote">비슷한 그래프: 선버스트, 중첩 도넛, 아이시클</span></div>
 </div>
 </article>
@@ -260,6 +275,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“돈·사람이 어디서 어디로 흘러갔나”처럼 출발→도착 분배를 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>흐름이 되돌아오는 고리가 있을 때, 출발-도착 쌍이 3개도 안 될 때, 모바일 위주일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>흐름을 색만으로 전하지 말고 “출발 → 도착 → 양”을 담은 표를 함께 제공하세요.</div>
 <div class="foot"><span class="chip g-C">⚠️ 표를 꼭 같이 보여주세요</span><span class="altnote">비슷한 그래프: 얼루비얼, 코드 다이어그램</span></div>
 </div>
 </article>
@@ -273,6 +289,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“매출에서 이런저런 비용을 빼면 순이익”처럼 증감 과정을 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>막대가 12개 넘게 많을 때, 청중이 그냥 최종 합계만 궁금할 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>오름/내림을 색뿐 아니라 ▲▼ 화살표로도 표시하고, 막대마다 숫자 라벨을 붙이세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 누적 막대, 캐스케이드</span></div>
 </div>
 </article>
@@ -286,6 +303,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“제품 A vs B를 여러 기능 점수로 한눈에” 비교할 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>축이 8개를 넘을 때, 정확한 수치 비교가 필요할 때 (막대가 나아요)</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>축을 5~8개로 줄이고, 정확히 비교하고 싶은 분을 위해 막대 그래프나 표를 함께 제공하세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: 평행 좌표, 그룹 막대</span></div>
 </div>
 </article>
@@ -299,6 +317,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>트레이딩·투자처럼 시가/고가/저가/종가가 다 있는 금융 데이터일 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>금융이 아닌 일반 청중, 시가·종가 데이터가 없을 때 (라인이 나아요)</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>상승/하락을 색만이 아니라 “속이 찬 몸통 vs 빈 몸통”으로도 구분하고, 숫자 표를 곁들이세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: OHLC 바, 헤이킨아시</span></div>
 </div>
 </article>
@@ -312,6 +331,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>소셜 관계·시스템 연결처럼 개체 간 이어짐을 탐색할 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>점이 500개 넘게 뒤엉킬 때, 정확한 연결 수가 필요할 때, 모바일일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>이 그래프는 화면 읽어주는 프로그램으론 이해가 거의 불가능해요. “A—B 연결” 목록 표를 반드시 함께 두세요.</div>
 <div class="foot"><span class="chip g-D">🚫 단독 사용은 피하세요 · 표 필수</span><span class="altnote">비슷한 그래프: 계층 트리, 인접 행렬</span></div>
 </div>
 </article>
@@ -325,6 +345,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“그룹별로 성적이 어떻게 퍼졌나”처럼 분포·중앙값·튀는 값을 비교할 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>그룹당 데이터가 20개도 안 될 때, 통계 그래프가 낯선 청중일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>최소·중앙·최대 같은 값을 담은 요약 표를 함께 두고, 튀는 값이 몇 개인지 글로 적어 주세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 바이올린 플롯, 비스웜</span></div>
 </div>
 </article>
@@ -338,6 +359,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>대시보드에 여러 KPI를 좁은 공간에 나란히 놓을 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>지표가 딱 하나일 때 (게이지가 나아요), 목표 범위가 없을 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>모든 값을 마우스 없이도 보이게 글자로 표시하고, 색 구간마다 “위험·주의·안전” 같은 텍스트를 붙이세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 게이지, 프로그레스 바</span></div>
 </div>
 </article>
@@ -351,6 +373,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“달성률 몇 %”를 이해하기 쉽고 산뜻하게 표현할 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>항목이 5개를 넘을 때, 정확한 숫자가 더 중요할 때, 공간이 아주 좁을 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>파이보다 읽기 쉬운 편이에요. 그래도 “68%”처럼 숫자를 항상 함께 적어 주세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 픽토그램, 100% 누적 막대</span></div>
 </div>
 </article>
@@ -364,6 +387,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“지출을 대분류 → 소분류로 파고들며” 계층 비율을 볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>3단계 넘게 깊을 때, 정확한 값이 중요할 때, 모바일일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>2단계를 넘으면 바깥 고리가 잘 안 보여요. %가 붙은 들여쓰기 목록을 함께 제공하세요.</div>
 <div class="foot"><span class="chip g-C">⚠️ 표를 꼭 같이 보여주세요</span><span class="altnote">비슷한 그래프: 트리맵, 아이시클, 서클 패킹</span></div>
 </div>
 </article>
@@ -377,6 +401,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>“매출 하락이 어느 지역·상품 탓인지” 원인을 파고들 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>뚜렷한 원인-결과 구조가 없을 때, 그냥 요약만 원하는 청중일 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>키보드로 펼치고 접을 수 있게 하고, 각 항목의 값과 기여율(%)을 글자로 읽을 수 있게 하세요.</div>
 <div class="foot"><span class="chip g-AA">✅ 누구나 읽기 쉬워요</span><span class="altnote">비슷한 그래프: 의사결정 트리, 플로 차트</span></div>
 </div>
 </article>
@@ -390,6 +415,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>과학·공학처럼 3번째 축이 꼭 필요한 특수한 경우</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>2D로도 같은 걸 보여줄 수 있을 때, 모바일, 일반 업무 대시보드일 때 (웬만하면 피하세요)</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>입체 그래프는 화면으로도 손으로도 다루기 어려워요. 2D 버전과 숫자 표를 반드시 함께 제공하세요.</div>
 <div class="foot"><span class="chip g-D">🚫 단독 사용은 피하세요 · 표 필수</span><span class="altnote">비슷한 그래프: 볼류메트릭 렌더링, 포인트 클라우드</span></div>
 </div>
 </article>
@@ -403,6 +429,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>실시간 모니터링처럼 초 단위로 값이 갱신되는 화면일 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>갱신이 분에 한 번도 안 될 때, 화면 깜빡임에 민감한 사용자 배려가 없을 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>멈춤/재생 버튼을 꼭 넣고, 지금 값을 큰 글씨로 보여주며, 움직임 줄이기 설정을 쓰는 분껜 애니메이션을 멈춰 주세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: 티커 테이프, 무빙 게이지</span></div>
 </div>
 </article>
@@ -416,6 +443,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>리뷰·댓글에서 “어떤 단어가 자주 나오나”를 훑어볼 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>정확한 수치가 중요할 때(글자 크기는 부정확), 글이 50건도 안 될 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>화면 읽어주는 프로그램에선 글자 크기가 안 읽혀요. “자주 나온 단어 순위” 목록을 함께 제공하세요.</div>
 <div class="foot"><span class="chip g-C">⚠️ 표를 꼭 같이 보여주세요</span><span class="altnote">비슷한 그래프: 센티먼트 아크, 레이더 차트</span></div>
 </div>
 </article>
@@ -429,6 +457,7 @@ footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-si
 <div class="u good"><span class="ul">👍 이럴 때 좋아요</span>업무·구매 흐름에서 병목이나 이탈 지점을 찾을 때</div>
 <div class="u avoid"><span class="ul">👎 이럴 땐 피하세요</span>기록 데이터가 없을 때, 딱 정해진 순서도를 기대할 때, 단계가 100개 넘게 많을 때</div>
 </div>
+<div class="acc"><span class="al">♿ 누구나 보게 하려면</span>복잡하면 길을 잃기 쉬워요. 흐름을 글로 요약하고, 가장 막히는 구간 3곳을 따로 짚어 주세요.</div>
 <div class="foot"><span class="chip g-B">🙂 무난해요 · 숫자 표를 곁들이면 더 좋아요</span><span class="altnote">비슷한 그래프: DAG, 페트리 넷</span></div>
 </div>
 </article>
