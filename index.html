@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ui-ux-pro-max 데이터셋 분석 리포트</title>
+<style>/*scale150*/html{zoom:1.5}
+:root{
+  --bg:#F6F7F5; --surface:#FFFFFF; --ink:#20261F; --muted:#5C665A;
+  --line:#DDE2DA; --accent:#0E6E5C; --accent-soft:#E2EFEA;
+  --danger:#B0472E; --danger-soft:#F6E7E1;
+  --warn:#9A6B12; --warn-soft:#F5ECD9;
+  --ok:#3E6B32; --ok-soft:#E6EEDF;
+  --chip:#EDF0EB; --code:#EFF2EE;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161A16; --surface:#1E241E; --ink:#E5EAE2; --muted:#9AA697;
+    --line:#333B32; --accent:#5BC0A8; --accent-soft:#1E3A32;
+    --danger:#E08A6D; --danger-soft:#3C2620;
+    --warn:#D9A94E; --warn-soft:#3A301F;
+    --ok:#9CC488; --ok-soft:#26321F;
+    --chip:#2A322A; --code:#242B24;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Segoe UI",sans-serif;
+  line-height:1.6;font-size:15px}
+.wrap{max-width:1200px;margin:0 auto;padding:40px 28px 80px}
+header.page{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:32px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.25;margin:0 0 10px;text-wrap:balance;font-weight:800}
+.lede{color:var(--muted);max-width:70ch;margin:0}
+.backlink{font-size:13px;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:20px}
+.backlink:hover{color:var(--accent)}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 20px;min-width:130px;flex:0 1 auto}
+.stat b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.2}
+.stat span{font-size:12.5px;color:var(--muted)}
+h2{font-size:21px;margin:44px 0 6px;font-weight:800}
+h3{font-size:16px;margin:26px 0 8px;font-weight:700}
+.note{color:var(--muted);font-size:13.5px;margin:0 0 16px;max-width:78ch}
+.insight{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:8px;padding:16px 20px;margin:20px 0}
+.insight p{margin:6px 0;font-size:14px}
+.insight p:first-child{margin-top:0}.insight p:last-child{margin-bottom:0}
+.bars{display:grid;gap:7px;margin:14px 0 6px}
+.bar{display:grid;grid-template-columns:220px 1fr 44px;align-items:center;gap:12px;font-size:13px}
+.bar .label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .track{background:var(--chip);border-radius:4px;height:14px;overflow:hidden}
+.bar .fill{background:var(--accent);height:100%;border-radius:4px}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+thead th{position:sticky;top:0;background:var(--surface);text-align:left;padding:10px 12px;
+  border-bottom:2px solid var(--line);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:color-mix(in srgb, var(--accent) 4%, transparent)}
+.chip{display:inline-block;background:var(--chip);border-radius:99px;padding:1px 9px;font-size:12px;white-space:nowrap;margin:1px 2px 1px 0}
+.chip.acc{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.sev-HIGH,.sev-High{background:var(--danger-soft);color:var(--danger);font-weight:700}
+.sev-MEDIUM,.sev-Medium{background:var(--warn-soft);color:var(--warn);font-weight:700}
+.sev-LOW,.sev-Low{background:var(--ok-soft);color:var(--ok);font-weight:700}
+.g-AAA,.g-AA{background:var(--ok-soft);color:var(--ok);font-weight:700}
+.g-B{background:var(--warn-soft);color:var(--warn);font-weight:700}
+.g-C,.g-D{background:var(--danger-soft);color:var(--danger);font-weight:700}
+.do{color:var(--ok)}
+.dont{color:var(--danger)}
+.search{width:100%;max-width:420px;padding:10px 14px;border:1.5px solid var(--line);border-radius:8px;
+  background:var(--surface);color:var(--ink);font-size:14px;margin:8px 0 4px}
+.search:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.fbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;
+  padding:4px 13px;font-size:12.5px;cursor:pointer;font-family:inherit}
+.fbtn:hover{border-color:var(--accent)}
+.fbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.count-line{font-size:13px;color:var(--muted);margin:4px 0 0}
+details{border:1px solid var(--line);border-radius:10px;background:var(--surface);margin:10px 0;overflow:hidden}
+details summary{cursor:pointer;padding:13px 18px;font-weight:700;list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+details summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+details summary:hover{background:color-mix(in srgb, var(--accent) 5%, transparent)}
+details .body{padding:0 18px 16px}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12.5px;background:var(--code);border-radius:5px;padding:1px 6px}
+code.block{display:block;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;background:var(--code);
+  border-radius:6px;padding:10px 12px;overflow-x:auto;white-space:pre-wrap;word-break:break-all;margin:4px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin:16px 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.card h4{margin:0 0 6px;font-size:15.5px}
+.card .meta{font-size:12.5px;color:var(--muted)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){.bar{grid-template-columns:120px 1fr 38px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page">
+<p class="eyebrow">UI/UX Pro Max Skill · Data Deep-Dive</p>
+<h1>ui-ux-pro-max 데이터셋 분석 리포트</h1>
+<p class="lede">스킬에 내장된 5개 핵심 데이터셋을 전수 분석한 리포트 모음입니다. 각 페이지는 원본 CSV의 모든 행을 담고 있으며 검색·필터가 가능합니다.</p>
+</header>
+
+<div class="stats">
+<div class="stat"><b>5</b><span>데이터셋</span></div>
+<div class="stat"><b>1580</b><span>총 데이터 행 수</span></div>
+</div>
+<div class="grid2"><a class="card" href="01-stacks.html" style="text-decoration:none;color:inherit;display:block">
+<h4>스택별 베스트 프랙티스</h4><p class="meta">22개 스택 · 1221개 규칙</p><p style="font-size:13.5px;margin:8px 0 0">프레임워크별 Do/Don't + Good/Bad 코드 예시. 웹 12종, 모바일 4종, 데스크톱 6종.</p></a><a class="card" href="02-charts.html" style="text-decoration:none;color:inherit;display:block">
+<h4>25개 차트 유형 가이드</h4><p class="meta">25개 데이터 유형 매핑</p><p style="font-size:13.5px;margin:8px 0 0">데이터 질문 → 최적 차트 + 금지 조건 + 접근성 등급 + 라이브러리 추천.</p></a><a class="card" href="03-product-reasoning.html" style="text-decoration:none;color:inherit;display:block">
+<h4>161개 제품 유형별 추론 규칙</h4><p class="meta">161개 제품 · 149개 HIGH</p><p style="font-size:13.5px;margin:8px 0 0">--design-system의 두뇌. 제품 유형 → 패턴·스타일·컬러·안티패턴 자동 결정.</p></a><a class="card" href="04-font-pairings.html" style="text-decoration:none;color:inherit;display:block">
+<h4>74개 폰트 페어링</h4><p class="meta">74개 조합 · 설치 코드 포함</p><p style="font-size:13.5px;margin:8px 0 0">헤딩+본문 페어링에 Google Fonts URL·CSS import·Tailwind 설정 동봉.</p></a><a class="card" href="05-ux-guidelines.html" style="text-decoration:none;color:inherit;display:block">
+<h4>99개 UX 가이드라인</h4><p class="meta">18개 카테고리 · 코드 예시 포함</p><p style="font-size:13.5px;margin:8px 0 0">접근성·폼·애니메이션부터 VisionOS·AI 인터랙션까지 심각도 태깅된 규칙.</p></a></div>
+
+<footer>출처: <span class="mono">~/.claude/skills/ui-ux-pro-max/data/</span> · 생성일 2026-07-13 · 이 문서는 스킬에 실제 수록된 CSV 데이터 전수를 담고 있습니다.</footer>
+</div>
+
+</body>
+</html>
